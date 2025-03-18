@@ -28,5 +28,6 @@
       "@mock/*": ["mock/*"]
 		}
 	},
-	"include": ["./src"]
+	"include": ["./src"],
+	"exclude": ["vite.config.ts"]
 }

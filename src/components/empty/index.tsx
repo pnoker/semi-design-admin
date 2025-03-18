@@ -6,7 +6,7 @@ import { IllustrationNoAccess, IllustrationConstruction } from '@douyinfe/semi-i
 interface Iprops {
 	title?: string
 	description?: string
-	type: '404' | '403'
+	type: '404' | '403' | '500'
 }
 
 const Result: FC<Iprops> = ({ title, description, type }) => {
