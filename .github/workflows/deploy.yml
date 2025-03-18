@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [17.0.1]
+        node-version: [22.14.0]
     steps:
       - uses: actions/checkout@v2
       - run: npm install
