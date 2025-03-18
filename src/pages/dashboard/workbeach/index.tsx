@@ -3,9 +3,10 @@ import { IconPlus } from '@douyinfe/semi-icons'
 import { Avatar, Descriptions, Col, Row, CardGroup, Card, Typography, List, Button } from '@douyinfe/semi-ui'
 import { chinaNumChar } from '@src/common'
 import echarts from '@src/common/echarts'
-import ReactEChartsCore from 'echarts-for-react/lib/core'
+import ReactECharts from 'echarts-for-react'
 import { IconArrowUp, IconArrowDown } from '@douyinfe/semi-icons'
 import useStore from '@src/store/dashboard/workbeach'
+import { useShallow } from 'zustand/shallow'
 import { useLoading } from '@src/hooks/useLoading'
 import { workbeachOption } from '@src/common/echart-option'
 import './index.scss'
@@ -15,11 +16,14 @@ const { Text } = Typography
 
 const Index: React.FC = () => {
 	const { loading } = useLoading()
-	const headerData = useStore((state) => state.headerData)
-	const inProcessData = useStore((state) => state.inProcessData)
-	const recentActivityData = useStore((state) => state.recentActivityData)
-
-	const getWorkBeachData = useStore((state) => state.getWorkBeachData)
+	const { headerData, inProcessData, recentActivityData, getWorkBeachData } = useStore(
+		useShallow((state) => ({
+			headerData: state.headerData,
+			inProcessData: state.inProcessData,
+			recentActivityData: state.recentActivityData,
+			getWorkBeachData: state.getWorkBeachData
+		}))
+	)
 
 	const formatHeaderData = useMemo(() => {
 		return headerData.map((e) => {
@@ -156,12 +160,13 @@ const Index: React.FC = () => {
 								</Row>
 							</Card>
 							<Card title="销售指数" style={{ marginTop: '20px' }} loading={loading}>
-								<ReactEChartsCore
-									echarts={echarts}
+								<ReactECharts
+									key="workbeach-chart"
 									option={workbeachOption}
 									notMerge={true}
 									lazyUpdate={true}
 									style={{ height: 400 }}
+									opts={{ renderer: 'svg' }}
 								/>
 							</Card>
 							<Card title="团队" style={{ marginTop: '20px' }} loading={loading}>

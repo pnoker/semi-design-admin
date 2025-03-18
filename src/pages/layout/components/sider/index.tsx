@@ -5,6 +5,7 @@ import menuList, { MenuItem } from '@src/menus/config'
 import { useLocation, useNavigate } from 'react-router'
 import { useLocale } from '@src/locales'
 import useStore from '@src/store/common/global'
+import { useShallow } from 'zustand/shallow'
 import '../../index.scss'
 
 const { Sider } = Layout
@@ -38,7 +39,7 @@ const Index: FC = () => {
 	const { formatMessage } = useLocale()
 	const [openKeys, setOpenKeys] = useState<string[]>([])
 	const [selectedKeys, setSelectedKeys] = useState<string[]>([])
-	const locale = useStore((state) => state.locale)
+	const locale = useStore(useShallow((state) => state.locale))
 
 	const navList = useMemo(() => {
 		return menuList.map((e) => {
@@ -53,7 +54,7 @@ const Index: FC = () => {
 								text: formatMessage({ id: m.text }),
 								icon: m.icon ? renderIcon(m.icon) : null
 							}
-					  })
+						})
 					: []
 			}
 		})
@@ -67,7 +68,7 @@ const Index: FC = () => {
 		setOpenKeys([...data.openKeys])
 	}
 
-	// setSelectedKeys 和 path 双向绑定
+	// Two-way binding between setSelectedKeys and path
 	useEffect(() => {
 		const keys: string[] = findMenuByPath(menuList, pathname, [])
 		setSelectedKeys([keys.pop() as string])
@@ -77,7 +78,7 @@ const Index: FC = () => {
 	return (
 		<Sider style={{ backgroundColor: 'var(--semi-color-bg-1)' }}>
 			<Nav
-				items={navList}
+				items={navList as any}
 				openKeys={openKeys}
 				selectedKeys={selectedKeys}
 				onSelect={onSelect}

@@ -1,5 +1,5 @@
 import { getLocalStorage } from '@src/utils/storage'
-import create from 'zustand'
+import { create } from 'zustand'
 
 export interface GlobalState {
 	locale: 'zh_CN' | 'en_GB'
@@ -18,8 +18,8 @@ const store = create<GlobalState>((set, get) => ({
 	}
 }))
 
-const { getState, setState, subscribe, destroy } = store
+const { getState, setState, subscribe } = store
 
-export { getState, setState, subscribe, destroy }
+export { getState, setState, subscribe }
 
 export default store

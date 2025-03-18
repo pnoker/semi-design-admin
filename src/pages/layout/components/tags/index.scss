@@ -1,0 +1,29 @@
+.headertabs {
+	:global {
+		.semi-tabs-bar {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 4px;
+			padding: 4px;
+		}
+
+		.semi-tabs-tab {
+			margin: 0 !important;
+			white-space: nowrap;
+		}
+
+		.semi-tabs-nav {
+			overflow: visible;
+		}
+
+		.semi-tabs-content {
+			display: none;
+		}
+	}
+}
+
+#pageTabs {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}

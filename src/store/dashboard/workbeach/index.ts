@@ -1,4 +1,4 @@
-import create from 'zustand'
+import { create } from 'zustand'
 import { headerDataType, inProcessDataType, recentActivityDataType } from '@mock/workbeach'
 import request from '@src/utils/request'
 

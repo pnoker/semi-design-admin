@@ -14,7 +14,7 @@ const { Item } = Breadcrumb
 let breadcrumbList: BreadcrumbItem[] = []
 let end = false
 
-// 根据pathname找出面包屑路径
+// Find breadcrumb path based on pathname
 const getBreadcrumbByPathName = (menuList: MenuItem[], pathname: string, breadcrumbs: BreadcrumbItem[] = []) => {
 	for (const menu of menuList) {
 		const list: BreadcrumbItem[] = []

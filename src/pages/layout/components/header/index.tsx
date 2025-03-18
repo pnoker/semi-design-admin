@@ -3,14 +3,19 @@ import { Layout, Nav, Button, Avatar, Badge, Dropdown, RadioGroup, Radio } from 
 import { IconBell, IconHelpCircle } from '@douyinfe/semi-icons'
 import Breadcrumb from '../breadcrumb'
 import useStore from '@src/store/common/global'
+import { useShallow } from 'zustand/shallow'
 import Tags from '../tags'
 import '../../index.scss'
 
 const { Header } = Layout
 
 const Index: FC = () => {
-	const locale = useStore((state) => state.locale)
-	const changeLocale = useStore((state) => state.changeLocale)
+	const { locale, changeLocale } = useStore(
+		useShallow((state) => ({
+			locale: state.locale,
+			changeLocale: state.changeLocale
+		}))
+	)
 
 	const selectLocale = (locale: 'zh_CN' | 'en_GB') => {
 		changeLocale(locale)
@@ -18,7 +23,7 @@ const Index: FC = () => {
 	}
 
 	const question = () => {
-		window.open('https://github.com/xieyezi/semi-design-pro/issues')
+		window.open('https://github.com/pnoker/semi-design-admin/issues')
 	}
 	return (
 		<Header className="layout-header">

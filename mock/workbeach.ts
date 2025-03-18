@@ -1,3 +1,4 @@
+import { AvatarColor } from '@douyinfe/semi-ui/lib/es/avatar/interface'
 import { MockMethod } from 'vite-plugin-mock'
 
 const headerData = [
@@ -24,7 +25,7 @@ const inProcessData = [
 		icon: 'https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png',
 		description: '希望是一个好东西，是最好的，好东西是不会消亡的',
 		group: '全组都是吴彦祖',
-		time: '1年前'
+		time: '几天前'
 	},
 	{
 		title: 'Semi Design',
@@ -38,21 +39,21 @@ const inProcessData = [
 		icon: 'https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png',
 		description: '凛冬将至',
 		group: '高逼格设计天团',
-		time: '3月前'
+		time: '几周前'
 	},
 	{
 		title: 'Bootstrap',
 		icon: 'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png',
 		description: '那时候我只会想自己想要什么，从不想自己拥有什么',
 		group: '程序员日常',
-		time: '1年前'
+		time: '几个月前'
 	},
 	{
 		title: 'React',
 		icon: 'https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png',
 		description: '生命就像一盒巧克力，结果往往出人意料',
 		group: '学计算机',
-		time: '2年前'
+		time: '几个月前'
 	}
 ]
 
@@ -62,49 +63,49 @@ const recentActivityData = [
 		group: '高逼格设计天团',
 		action: '新建项目',
 		project: '六月迭代',
-		color: 'purple'
+		color: 'purple' as AvatarColor
 	},
 	{
 		user: '付芳芳',
 		group: '高逼格设计天团',
 		action: '新建项目',
 		project: '六月迭代',
-		color: 'blue'
+		color: 'blue' as AvatarColor
 	},
 	{
 		user: '林东东',
 		group: '高逼格设计天团',
 		action: '新建项目',
 		project: '六月迭代',
-		color: 'cyan'
+		color: 'cyan' as AvatarColor
 	},
 	{
 		user: '苏小小',
 		group: '5月日常迭代',
 		action: '更新至已发布状态',
 		project: '',
-		color: 'orange'
+		color: 'orange' as AvatarColor
 	},
 	{
 		user: '朱偏右',
 		group: '工程效能',
 		action: '发布了',
 		project: '留言',
-		color: 'amber'
+		color: 'amber' as AvatarColor
 	},
 	{
 		user: '赵大大',
 		group: '工程效能',
 		action: '发布了',
 		project: '留言',
-		color: 'red'
+		color: 'red' as AvatarColor
 	},
 	{
 		user: '李冰冰',
 		group: '工程效能',
 		action: '发布了',
 		project: '留言',
-		color: 'light-green'
+		color: 'light-green' as AvatarColor
 	}
 ]
 

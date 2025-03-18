@@ -9,7 +9,7 @@ function handleCommonError(err: any, config: any) {
 	const { code } = err
 	switch (code) {
 		case errorCode.c401: {
-			// 重新登录
+			// Login again
 			localStorage.clear()
 			break
 		}

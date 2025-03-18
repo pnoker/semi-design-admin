@@ -14,7 +14,7 @@ import {
 } from '@douyinfe/semi-ui'
 import { IconArrowDown, IconArrowUp, IconInfoCircle } from '@douyinfe/semi-icons'
 import echarts from '@src/common/echarts'
-import ReactEChartsCore from 'echarts-for-react/lib/core'
+import ReactECharts from 'echarts-for-react'
 import { anlyanisAccessOption, anlyanisPayOption, anlyanisSalesOption } from '@src/common/echart-option'
 import './index.scss'
 
@@ -120,12 +120,13 @@ const Index: React.FC = () => {
 							<Descriptions row size="large">
 								<Item itemKey="">9,384</Item>
 							</Descriptions>
-							<ReactEChartsCore
-								echarts={echarts}
+							<ReactECharts
+								key="anlyanis-access-chart"
 								option={anlyanisAccessOption}
 								notMerge={true}
 								lazyUpdate={true}
 								style={{ height: 70 }}
+								opts={{ renderer: 'svg' }}
 							/>
 						</Card>
 					</Col>
@@ -148,12 +149,13 @@ const Index: React.FC = () => {
 							<Descriptions row size="large">
 								<Item itemKey="">9,384</Item>
 							</Descriptions>
-							<ReactEChartsCore
-								echarts={echarts}
+							<ReactECharts
+								key="anlyanis-pay-chart"
 								option={anlyanisPayOption}
 								notMerge={true}
 								lazyUpdate={true}
 								style={{ height: 70 }}
+								opts={{ renderer: 'svg' }}
 							/>
 						</Card>
 					</Col>
@@ -206,12 +208,13 @@ const Index: React.FC = () => {
 				>
 					<Row>
 						<Col span={16}>
-							<ReactEChartsCore
-								echarts={echarts}
+							<ReactECharts
+								key="anlyanis-sales-chart"
 								option={anlyanisSalesOption}
 								notMerge={true}
 								lazyUpdate={true}
-								style={{ minHeight: 400 }}
+								style={{ height: 300 }}
+								opts={{ renderer: 'svg' }}
 							/>
 						</Col>
 						<Col span={8}>

@@ -17,18 +17,18 @@ const baseUrl = import.meta.env.VITE_BASE_API
 const basePrefix = import.meta.env.MODE === 'development' ? apiPrefix : ''
 const { toogleLoading } = getState()
 
-// 拦截器
+// Interceptors
 axios.interceptors.response.use(
-	// 响应拦截
+	// Response interception
 	(response: any) => {
 		toogleLoading(false)
 		return response.data
 	},
-	// 错误拦截
+	// Error interception
 	(error) => {
 		const { response } = error
 		toogleLoading(false)
-		// 请求有响应
+		// Request has response
 		if (response) {
 			const { status, data, config } = response
 			const { message } = data
@@ -39,7 +39,7 @@ axios.interceptors.response.use(
 			handleNoCommontError(errorMsg)
 			return Promise.reject(errorMsg)
 		}
-		// 请求超时
+		// Request timeout
 		if (error.code === 408) {
 			const timeoutMsg = '请求超时，请稍后再试'
 			handleNoCommontError(timeoutMsg)

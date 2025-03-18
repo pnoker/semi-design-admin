@@ -24,7 +24,7 @@ export default [
 		response: {
 			code: 200,
 			data: {
-				username: 'xieyezi'
+				username: 'pnoker'
 			}
 		}
 	}

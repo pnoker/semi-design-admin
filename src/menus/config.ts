@@ -11,7 +11,7 @@ import {
 export interface MenuItem {
 	itemKey: string
 	text: string
-	icon?: React.ReactNode
+	icon?: React.ComponentType<any>
 	path?: string
 	items?: MenuItem[]
 	component?: React.ComponentType<any>

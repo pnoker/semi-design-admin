@@ -3,6 +3,7 @@ import { Tabs, TabPane } from '@douyinfe/semi-ui'
 import { useNavigate, useLocation } from 'react-router-dom'
 import TagsViewAction from './tagAction'
 import useStore from '@src/store/common/headerTag'
+import { useShallow } from 'zustand/shallow'
 import menuList, { MenuItem } from '@src/menus/config'
 import { useLocale } from '@src/locales'
 import './index.scss'
@@ -11,13 +12,9 @@ const Index: FC = () => {
 	const navigate = useNavigate()
 	const location = useLocation()
 	const { formatMessage } = useLocale()
-	const [tags, activeTagId, addTag, removeTag, setActiveTag] = useStore((state) => [
-		state.tags,
-		state.activeTagId,
-		state.addTag,
-		state.removeTag,
-		state.setActiveTag
-	])
+	const [tags, activeTagId, addTag, removeTag, setActiveTag] = useStore(
+		useShallow((state) => [state.tags, state.activeTagId, state.addTag, state.removeTag, state.setActiveTag])
+	)
 
 	// Tabs change
 	const onChange = (key: string) => {
@@ -58,7 +55,7 @@ const Index: FC = () => {
 		}
 	}
 
-	// 页面刷新时加入 pathname 的tab
+	// Add tab for pathname on page refresh
 	useEffect(() => {
 		if (menuList.length) {
 			const { pathname } = location
@@ -74,7 +71,7 @@ const Index: FC = () => {
 		}
 	}, [location.pathname])
 
-	// pathname 和 tab 绑定
+	// Binding between pathname and tab
 	useEffect(() => {
 		if (tags && activeTagId) {
 			const targetTab = tags.filter((e) => e.id === activeTagId)
@@ -90,7 +87,7 @@ const Index: FC = () => {
 				onChange={onChange}
 				activeKey={activeTagId}
 				onTabClose={(targetKey) => onClose(targetKey as string)}
-				// tabBarExtraContent={<TagsViewAction />}
+				tabBarExtraContent={<TagsViewAction />}
 				className="headertabs"
 			>
 				{tags.map((tag) => (
